@@ -97,7 +97,7 @@
                               event_attendance_url(@event),
                               class: 'btn btn-primary',
                               method: :post,
-                              data: { confirm: '申し込みます' }
+                              data: { bs_toggle: 'modal', bs_target: '#confirmationModal' } 
                   %>
                 <% end %>
               <% end %>
@@ -137,4 +137,22 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModalLabel">必ずお読みください！</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          連絡先交換などの出会いを目的とした、一切のもくもく会作成を禁止します！
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          <%= button_to '参加する', event_attendance_url(@event), method: :post, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
