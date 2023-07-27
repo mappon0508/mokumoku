@@ -11,13 +11,3 @@ import "theme.js"
 import "image_preview.js"
 Rails.start()
 ActiveStorage.start()
-
-document.addEventListener("DOMContentLoaded", function() {
-  const joinEventButton = document.getElementById("joinEventButton");
-  const confirmationModal = new bootstrap.Modal(document.getElementById("confirmationModal"));
-
-  joinEventButton.addEventListener("click", function(event) {
-    event.preventDefault();
-    confirmationModal.show();
-  });
-});

@@ -8,6 +8,12 @@
     <%= f.label :content %>
     <%= f.text_area :content, class: 'form-control', rows: 10 %>
   </div>
+  <% if current_user.gender == 'woman' %>
+    <div class="mb-3">
+      <%= f.label :only_woman, '女性限定' %>
+      <%= f.check_box :only_woman, class: 'form-check-input' %>
+    </div>
+  <% end %>
   <div class="mb-3">
     <%= f.label :held_at %>
     <%= f.datetime_field :held_at, class: 'form-control' %>
@@ -21,31 +27,5 @@
     <%= f.file_field :thumbnail, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
     <%= image_tag f.object.decorate.thumbnail, id: 'preview-target', class: 'w-100 border' %>
   </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmationModal">登録</button>
-
-    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="confirmationModalLabel">必ずお読みください！</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          連絡先交換などの出会いを目的とした、一切のもくもく会作成を禁止します！
-        </div>
-        <div class="modal-footer">
-          <!-- モーダルを閉じるためのボタン -->
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-          <!-- 実際のフォームを送信するボタン -->
-          <button type="button" class="btn btn-primary" onclick="submitForm()">登録</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= f.submit '登録', class: 'btn btn-primary' %>
 <% end %>
-
-<script>
-  function submitForm() {
-    document.querySelector("form").submit();
-  }
-</script>
